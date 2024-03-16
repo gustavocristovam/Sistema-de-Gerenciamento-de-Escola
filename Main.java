@@ -10,24 +10,16 @@ public class Main {
 
         miguel.setDisciplinas(miguel_Disciplinas);
 
-        Professor renata = new Professor("Renata");
+        Professor renata = new Professor("Renata", );
        
      
-
-       
-
 
 
     System.out.println("Aluno " + miguel.getNome());
        
-
-
-  
-   
-    
-
-
     System.out.println(miguel.getDisciplinas().listMaterias());
+
+
 
     }
 }

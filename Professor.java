@@ -2,14 +2,13 @@ public class Professor {
     String nome;
     String disciplina;
 
-    public Professor(String nome) {
+    public Professor(String nome, String disciplina) {
         this.nome = nome;
-    }
-
-
-    public void setDisciplina(String disciplina) {
         this.disciplina = disciplina;
     }
 
 
+  
+
 }
+s
