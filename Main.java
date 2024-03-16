@@ -10,14 +10,25 @@ public class Main {
 
         miguel.setDisciplinas(miguel_Disciplinas);
 
-        Professor renata = new Professor("Renata", );
+        Professor renata = new Professor("Renata", "Matemática");
        
      
-
+        miguel.getDisciplinas().setNota("Matemática",10);
 
     System.out.println("Aluno " + miguel.getNome());
        
-    System.out.println(miguel.getDisciplinas().listMaterias());
+    System.out.println(miguel.getDisciplinas().listarNotas());
+    System.out.println("\n");
+    System.out.println("\n");
+    System.out.println("\n"); 
+
+    System.out.println( renata.getNome()  + " : " +renata.getDisciplina());
+    System.out.println("\n");
+    System.out.println("\n");
+    System.out.println("\n"); 
+    miguel.getDisciplinas().removeNota("Matemática",6);
+    System.out.println(miguel.getDisciplinas().listarNotas());
+
 
 
 

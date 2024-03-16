@@ -11,11 +11,21 @@ public class Disciplinas {
        
     }};
 
+    public boolean existMateria(String value) {
+        for (String string : materias_list) {
+            if (string.equals(value)) {
+                return true;
+            }
+        }
+        return false; 
+    }
+    
+    
    
   
 
 
-    public StringBuilder listMaterias() {
+    public StringBuilder listarNotas() {
         StringBuilder listMateriasBuilder = new StringBuilder("Suas matérias:\n");  
            
         for (Map.Entry<String, Integer> materia : notas.entrySet()) {
@@ -25,5 +35,46 @@ public class Disciplinas {
     }
 
     
+// ADD REMOVE ATUALIZAR NOTAS
+
+public void setNota(String disciplina, int valor) {
+        if (existMateria(disciplina)) {
+            for (Map.Entry<String, Integer> map : notas.entrySet() ) {
+                if (map.getKey() == disciplina) {
+                    map.setValue(valor);
+                }
+            }
+        } else {
+            System.out.println("MATÉRIA INEXISTENTE!");
+        }
+}
+
+
+
+public void addNota(String disciplina, int valor) {
+    if (existMateria(disciplina)) {
+        for (Map.Entry<String, Integer> map : notas.entrySet() ) {
+            if (map.getKey() == disciplina) {
+                map.setValue(map.getValue() + valor);
+            }
+        }
+    } else {
+        System.out.println("MATÉRIA INEXISTENTE!");
+    }
+}
+
+
+public void removeNota(String disciplina, int valor) {
+    if (existMateria(disciplina)) {
+        for (Map.Entry<String, Integer> map : notas.entrySet() ) {
+            if (map.getKey() == disciplina) {
+                map.setValue(map.getValue() - valor);
+            }
+        }
+    } else {
+        System.out.println("MATÉRIA INEXISTENTE!");
+    }
+}
+
 
 }
