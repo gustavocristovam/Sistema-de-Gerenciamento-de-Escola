@@ -1,0 +1,4 @@
+Sistema de Gerenciamento de Escola
+Desenvolva um sistema para gerenciar informações de alunos, professores, disciplinas e notas. 
+Permita a adição, remoção e atualização dessas informações, bem como a geração de relatórios.
+
