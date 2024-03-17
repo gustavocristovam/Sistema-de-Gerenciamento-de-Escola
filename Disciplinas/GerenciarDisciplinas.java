@@ -1,5 +1,6 @@
 package Disciplinas;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 
 import Professores.Professor;
@@ -30,6 +31,17 @@ public class GerenciarDisciplinas {
         return texto;
     }
 
+
+
+    public StringBuilder getDisciplina(String nome) {
+        StringBuilder texto = new StringBuilder("INFORMAÇÕES: ");
+        for (Disciplina disciplina : disciplinalist) {
+            if (disciplina.getNome().equals(nome)) {
+                texto.append("Nome: " + disciplina.getNome() + " : " + "Professor: " + disciplina.getProfessor());
+            }
+        }
+        return texto;
+    }
 
     public void addDisciplina(String nome) {
         Disciplina disciplina = new Disciplina(nome);
