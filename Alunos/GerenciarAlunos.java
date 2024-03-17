@@ -7,14 +7,21 @@ public class GerenciarAlunos {
     private ArrayList<Aluno> alunolist = new ArrayList<>();
     
 
+    private Aluno filterAluno(String nome) {
+        for (Aluno aluno : alunolist) {
+            if (aluno.getNome().equals(nome)) {
+                return aluno;
+            } 
+        }
+        return null;
+    }
 
-public StringBuilder getListaDeAlunos() {
+
+    public StringBuilder getListaDeAlunos(){
         StringBuilder text = new StringBuilder("Lista de alunos: ");
-       for (Aluno aluno : alunolist) {
-           
+        for (Aluno aluno : alunolist) {
            text.append(aluno.getNome()).append(", ");
        }
-
        return text;
       }
 
@@ -26,16 +33,10 @@ public StringBuilder getListaDeAlunos() {
 
     
 public StringBuilder getAluno(String nome) {
-    StringBuilder texto = new StringBuilder("Informações: \n  \n" + //
-                "");
-    for (Aluno aluno : alunolist) {
-        if (aluno.getNome().equals(nome)) {
-           // texto.append( "Nome: " + aluno.getNome() + " \n \n" + aluno.getDisciplinas().listarNotas());
-            return texto;
-        }
-    }
-    return null;
-    
+    StringBuilder texto = new StringBuilder("Informações: \n  \n");
+    Aluno aluno = filterAluno(nome);   
+    texto.append( "Nome: " + aluno.getNome() + " \n \n");
+    return texto;
 }
 
    
@@ -53,14 +54,9 @@ return false;
 
 
 public void removeAluno(String nome) {
-    for (Aluno aluno : alunolist) {
-            if(aluno.getNome().equals(nome)) {
-                alunolist.remove(aluno);
-                aluno = null;
-            } else {
-                System.out.println("FALSE!");
-            }
-    }
+    Aluno aluno = filterAluno(nome);   
+    alunolist.remove(aluno);
+    aluno = null;        
 }
 
 }

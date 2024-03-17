@@ -2,6 +2,7 @@ package Disciplinas;
 import java.util.HashMap;
 import java.util.Map;
 
+import Professores.GerenciarProfessores;
 import Professores.Professor;
 
 public class Disciplina {
@@ -13,11 +14,13 @@ protected Disciplina(String materia) {
 }
 
 
+
     private String materia;
     private Professor professor;
 
 
     public void setProfessor(Professor professor) {
+       
         this.professor = professor;
     }
 

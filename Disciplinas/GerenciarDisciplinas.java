@@ -15,12 +15,12 @@ public class GerenciarDisciplinas {
 
     private ArrayList<Disciplina> disciplinalist = new ArrayList<>();
 // INSERIR MATERIAS BASICAS!
-   public GerenciarDisciplinas() {
+   /*public GerenciarDisciplinas() {
         for (String materia : materiasBasicas) {
             Disciplina disciplina_obj = new Disciplina(materia);
             disciplinalist.add(disciplina_obj);
         }
-    }  
+    }  */
 
 
     private Disciplina filterDisciplina(String nome) {
@@ -36,7 +36,7 @@ public class GerenciarDisciplinas {
     public StringBuilder getDisciplinasList() {
         StringBuilder texto = new StringBuilder("Matérias: \n");
         for (Disciplina disciplina : disciplinalist) {
-            texto.append(disciplina.getNome() + " : ");
+            texto.append(disciplina.getNome() + " : " + disciplina.getProfessor() + " \n" );
         }
         return texto;
     }
@@ -63,11 +63,13 @@ public class GerenciarDisciplinas {
     }
 
 
-    public void setDisciplinaProfessor(String materia, Professor professor) { //QUANDO TIVER O GERENCIAMENTO DE PROFESSOR TROCAR O OBJETO PELO NOME DO PROFESSOR!
-        Disciplina disciplina = filterDisciplina(materia); 
-        disciplina.setProfessor(professor);
-       
+    public void setDisciplinaProfessor(String materia, Professor professor) {
+        Disciplina disciplina = filterDisciplina(materia);  // FILTRAR MATERIA PELA STRING MATERIA, graças a listDisciplina que tem aqui no objeto
+                                                                    //Pegar Gerenciador de Professores, procurar o String professor, e setar no disciplina.setProfessor()
+             disciplina.setProfessor(professor); 
     }
+
+
 
 
    

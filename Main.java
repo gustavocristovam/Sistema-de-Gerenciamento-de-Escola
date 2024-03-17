@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import Alunos.Aluno;
 import Alunos.GerenciarAlunos;
 import Disciplinas.Disciplina;
@@ -10,13 +9,6 @@ import Professores.GerenciarProfessores;
 import Professores.Professor;
 
 public class Main {
-
-    
-  
-
-  
-
-
 
     public static void main(String[] args) {
 
@@ -98,15 +90,18 @@ public class Main {
         GerenciarProfessores professores = new GerenciarProfessores();
 
        
-
-
+        professores.addProfessor("Raimundo");
+        professores.addProfessor("Torrent");
         disciplinas.addDisciplina("Eletiva");
-        
+        disciplinas.addDisciplina("Portugues");
+
+        //GET OBJETO PROFESSOR PELO NOME
+        disciplinas.setDisciplinaProfessor("Eletiva", professores.getObjetProfessor("Raimundo"));
+        disciplinas.setDisciplinaProfessor("Portugues", professores.getObjetProfessor("Raimundo"));
 
 
         System.out.println( disciplinas.getDisciplinasList());
-        disciplinas.removeDisciplina("Eletiva");
-        System.out.println( disciplinas.getDisciplinasList());
+    
        
        
 

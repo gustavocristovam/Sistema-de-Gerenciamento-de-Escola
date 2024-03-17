@@ -6,6 +6,18 @@ public class GerenciarProfessores {
      private ArrayList<Professor> professorlist = new ArrayList<>();
 
 
+    public ArrayList<Professor> getProfessoresObjet() {
+          return professorlist;
+    }
+
+    public Professor filterProfessor(String nome) {
+          for (Professor professor : professorlist) {
+               if (professor.getNome().equals(nome)) {
+                    return professor;
+               }
+     }
+     return null; 
+     }
 
      public void addProfessor(String nome) {
           Professor professor = new Professor(nome);
@@ -13,12 +25,9 @@ public class GerenciarProfessores {
      }
 
      public void removerProfessor(String nome) {
-          for (Professor professor : professorlist) {
-               if (professor.getNome().equals(nome)) {
-                    professorlist.remove(professor);
-                    professor = null;
-               }
-          }
+          Professor professor = filterProfessor(nome);
+          professorlist.remove(professor);
+          professor = null; 
      }
 
 
@@ -31,13 +40,15 @@ public class GerenciarProfessores {
      }
 
 
+     public Professor getObjetProfessor(String nome) {
+          Professor professor = filterProfessor(nome);
+          return professor;
+     }
+
      public StringBuilder procurarProfessor(String nome) {                 //QUANDO TIVER MAIS INFORMAÇÕES VAI SER MAIS UTIL.!
           StringBuilder texto = new StringBuilder("INFORMAÇÕES: \n");
-          for (Professor professor : professorlist) {
-               if(professor.getNome().equals(nome)) {
-                    texto.append(professor.getNome());
-               }
-          }
+          Professor professor = filterProfessor(nome);
+          texto.append(professor.getNome());  
           return texto;
      }
 
