@@ -2,3 +2,64 @@ Sistema de Gerenciamento de Escola
 Desenvolva um sistema para gerenciar informações de alunos, professores, disciplinas e notas. 
 Permita a adição, remoção e atualização dessas informações, bem como a geração de relatórios.
 
+Gerenciar Informações de Alunos:
+
+Descrição: Este caso de uso permite aos usuários adicionar, remover e atualizar informações de alunos no sistema.
+Ator Principal: Administrador
+Pré-condições: O administrador está autenticado no sistema.
+Fluxo Principal:
+O administrador acessa a seção de gerenciamento de alunos.
+O sistema exibe as opções para adicionar, remover ou atualizar informações de alunos.
+O administrador seleciona a ação desejada (adicionar, remover ou atualizar).
+O sistema executa a ação solicitada pelo administrador.
+Fluxos Alternativos: N/A
+
+
+Gerenciar Informações de Professores:
+
+Descrição: Este caso de uso permite aos usuários adicionar, remover e atualizar informações de professores no sistema.
+Ator Principal: Administrador
+Pré-condições: O administrador está autenticado no sistema.
+Fluxo Principal:
+O administrador acessa a seção de gerenciamento de professores.
+O sistema exibe as opções para adicionar, remover ou atualizar informações de professores.
+O administrador seleciona a ação desejada (adicionar, remover ou atualizar).
+O sistema executa a ação solicitada pelo administrador.
+Fluxos Alternativos: N/A
+Gerenciar Informações de Disciplinas:
+
+Descrição: Este caso de uso permite aos usuários adicionar, remover e atualizar informações de disciplinas no sistema.
+Ator Principal: Administrador
+Pré-condições: O administrador está autenticado no sistema.
+Fluxo Principal:
+O administrador acessa a seção de gerenciamento de disciplinas.
+O sistema exibe as opções para adicionar, remover ou atualizar informações de disciplinas.
+O administrador seleciona a ação desejada (adicionar, remover ou atualizar).
+O sistema executa a ação solicitada pelo administrador.
+Fluxos Alternativos: N/A
+
+
+Gerenciar Notas dos Alunos:
+
+Descrição: Este caso de uso permite aos usuários adicionar, remover e atualizar as notas dos alunos em uma disciplina específica.
+Ator Principal: Professor
+Pré-condições: O professor está autenticado no sistema e associado a uma disciplina.
+Fluxo Principal:
+O professor acessa a seção de lançamento de notas.
+O sistema exibe uma lista de alunos matriculados na disciplina do professor.
+O professor seleciona um aluno e insere a nota.
+O sistema atualiza as notas do aluno.
+Fluxos Alternativos: N/A
+
+Gerar Relatórios:
+
+Descrição: Este caso de uso permite aos usuários gerar relatórios com base nas informações armazenadas no sistema.
+Ator Principal: Administrador
+Pré-condições: O administrador está autenticado no sistema.
+Fluxo Principal:
+O administrador acessa a seção de relatórios.
+O sistema exibe opções para selecionar o tipo de relatório desejado (por exemplo, relatório de alunos, relatório de notas, etc.).
+O administrador seleciona o tipo de relatório e configura os parâmetros necessários (como período de tempo, disciplina, etc.).
+O sistema gera o relatório conforme as configurações fornecidas.
+Fluxos Alternativos: N/A
+Estes são apenas exemplos bási

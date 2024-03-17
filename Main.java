@@ -1,33 +1,38 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
+import Alunos.Aluno;
+import Alunos.GerenciarAlunos;
+import Objetos.Disciplinas;
 
 public class Main {
     public static void main(String[] args) {
 
-        
-        Aluno miguel = new Aluno("Miguel");
-        Disciplinas miguel_Disciplinas = new Disciplinas();
+        GerenciarAlunos gerenciarAlunos = new GerenciarAlunos();
+        Scanner teclado = new Scanner(System.in);
+      
+        for (int i = 0; i < 4; i++) {
+            System.out.println("Insira o nome do aluno:");
+            String nome = teclado.next(); 
+            Aluno aluno = gerenciarAlunos.adicionarAluno(nome);
+            System.out.println("Aluno adicionado: " + aluno.getNome()); 
+        }
+           
 
-        miguel.setDisciplinas(miguel_Disciplinas);
+            System.out.println("\n");
+            System.out.println("\n");
+            System.out.println("\n");
+            System.out.println(gerenciarAlunos.getListaDeAlunos());
 
-        Professor renata = new Professor("Renata", "Matemática");
+
+          
+
+
        
-     
-        miguel.getDisciplinas().setNota("Matemática",10);
 
-    System.out.println("Aluno " + miguel.getNome());
-       
-    System.out.println(miguel.getDisciplinas().listarNotas());
-    System.out.println("\n");
-    System.out.println("\n");
-    System.out.println("\n"); 
+      
 
-    System.out.println( renata.getNome()  + " : " +renata.getDisciplina());
-    System.out.println("\n");
-    System.out.println("\n");
-    System.out.println("\n"); 
-    miguel.getDisciplinas().removeNota("Matemática",6);
-    System.out.println(miguel.getDisciplinas().listarNotas());
 
 
 

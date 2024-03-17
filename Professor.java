@@ -1,3 +1,5 @@
+import Objetos.Disciplinas;
+
 public class Professor {
     String nome;
     String disciplina;

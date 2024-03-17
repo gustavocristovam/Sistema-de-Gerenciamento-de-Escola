@@ -1,12 +1,19 @@
-public class Aluno{
+
+package Alunos;
+
+import Objetos.Disciplinas;
+
+
+
+public class Aluno {
 
     private String nome;
     private Disciplinas disciplinas;
 
-   public Aluno(String nome) {
+   
+    public Aluno(String nome) {
         this.nome = nome;
-   }
-
+    }
   
    
     public String getNome() {
