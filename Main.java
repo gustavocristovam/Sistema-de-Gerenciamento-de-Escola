@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 import Alunos.Aluno;
 import Alunos.GerenciarAlunos;
-import Objetos.Disciplinas;
+import Disciplinas.Disciplina;
+import Disciplinas.GerenciarDisciplinas;
 
 public class Main {
 
@@ -26,27 +27,32 @@ public class Main {
        //sistema
        //alunos
        int sair = 0;
+
+       /*  ALUNOS GERENCIMENTO! 
     do {
-      
        System.out.println("\n Selecione a opção desejada: \n");
        System.out.println("1 - PROCURAR ALUNO");
        System.out.println("2 - ADICIONAR ALUNO");
        System.out.println("3 - REMOVER ALUNO");
        System.out.println("4 - LISTAR ALUNO \n");
        System.out.println("5 - SAIR \n");
-       
        switch (teclado.next()) {
-        
         case "1":
         clearConsole();
+        System.out.println(gerenciarAlunos.getListaDeAlunos()); 
         System.out.println("Procurar o nome do Aluno:");
         String aluno = teclado.next();
             if (gerenciarAlunos.existAluno(aluno) ) {
                 clearConsole();
                 System.out.println(gerenciarAlunos.getAluno(aluno));
             }
-           
-            break;
+            System.out.println("\n Selecione a opção desejada: \n");
+             System.out.println("1 - PROCURAR ALUNO");
+             System.out.println("2 - ADICIONAR ALUNO");
+             System.out.println("3 - REMOVER ALUNO");
+             System.out.println("4 - LISTAR ALUNO \n");
+             System.out.println("5 - SAIR \n");
+            break; 
         case "2": 
         clearConsole();
          System.out.println("Adicionar o nome do Aluno:");
@@ -57,12 +63,10 @@ public class Main {
                 System.out.println("Esse aluno já existe!");
              }
          break;
-        
         case "3":
        clearConsole();
        System.out.println(gerenciarAlunos.getListaDeAlunos()); 
-        System.out.println("Remover Aluno:");
-        
+        System.out.println("Remover Aluno:");  
         aluno = teclado.next();
              if(gerenciarAlunos.existAluno(aluno)) {
                 gerenciarAlunos.removeAluno(aluno);
@@ -77,20 +81,20 @@ public class Main {
         case "5": 
             sair = 1;
              break;   
-           
-       
         default:
         sair = 1;
             break;
        }
     } while (sair == 0);
+  */
 
-
-
+        
 
           
 
-
+        GerenciarDisciplinas disciplinas = new GerenciarDisciplinas();
+System.out.println( disciplinas.getDisciplinasList());
+       
        
 
       

@@ -1,31 +1,33 @@
-package Objetos;
+package Disciplinas;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Disciplinas {
+import Professores.Professor;
 
-    private String[] materias_list = {"Matemática", "Física", "Química", "História", "Geografia", "Biologia", "Língua Portuguesa", "Língua Inglesa"};
-    private HashMap<String, Integer> notas = new HashMap<>() {{
-        for ( String materia : materias_list) {
-            put(materia, 0);
-        }
-       
-    }};
+public class Disciplina {
+//Cada Disciplina vai ter seu professor! Inlcuede
 
-    public boolean existMateria(String value) {
-        for (String string : materias_list) {
-            if (string.equals(value)) {
-                return true;
-            }
-        }
-        return false; 
+
+public Disciplina(String materia) {
+    this.materia = materia;
+}
+
+
+    String materia;
+    Professor professor = new Professor("Ramos");
+
+
+    public String getNome() {
+        return this.materia;
     }
-    
+
+
+
     
    
   
 
-
+/* 
     public StringBuilder listarNotas() {
         StringBuilder listMateriasBuilder = new StringBuilder("Suas matérias:\n  \n");  
            
@@ -76,6 +78,6 @@ public void removeNota(String disciplina, int valor) {
         System.out.println("MATÉRIA INEXISTENTE!");
     }
 }
-
+*/
 
 }

@@ -26,6 +26,7 @@ O sistema exibe as opções para adicionar, remover ou atualizar informações d
 O administrador seleciona a ação desejada (adicionar, remover ou atualizar).
 O sistema executa a ação solicitada pelo administrador.
 Fluxos Alternativos: N/A
+
 Gerenciar Informações de Disciplinas:
 
 Descrição: Este caso de uso permite aos usuários adicionar, remover e atualizar informações de disciplinas no sistema.

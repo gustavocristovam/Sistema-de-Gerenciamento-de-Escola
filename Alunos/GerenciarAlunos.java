@@ -30,7 +30,7 @@ public StringBuilder getAluno(String nome) {
                 "");
     for (Aluno aluno : alunolist) {
         if (aluno.getNome().equals(nome)) {
-            texto.append( "Nome: " + aluno.getNome() + " \n \n" + aluno.getDisciplinas().listarNotas());
+           // texto.append( "Nome: " + aluno.getNome() + " \n \n" + aluno.getDisciplinas().listarNotas());
             return texto;
         }
     }
@@ -56,6 +56,7 @@ public void removeAluno(String nome) {
     for (Aluno aluno : alunolist) {
             if(aluno.getNome().equals(nome)) {
                 alunolist.remove(aluno);
+                aluno = null;
             } else {
                 System.out.println("FALSE!");
             }

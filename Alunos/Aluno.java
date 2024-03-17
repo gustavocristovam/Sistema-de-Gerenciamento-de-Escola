@@ -1,14 +1,14 @@
 
 package Alunos;
 
-import Objetos.Disciplinas;
+import Disciplinas.Disciplina;
 
 
 
 public class Aluno {
 
     private String nome;
-    private Disciplinas disciplinas = new Disciplinas();
+   // private Disciplina disciplinas = new Disciplina();
 
    
     public Aluno(String nome) {
@@ -21,9 +21,9 @@ public class Aluno {
     }
 
   
-    public Disciplinas getDisciplinas() {
-        return disciplinas;
-    }
+    //public Disciplina getDisciplinas() {
+   //     return disciplinas;
+   // }
 
  
 
