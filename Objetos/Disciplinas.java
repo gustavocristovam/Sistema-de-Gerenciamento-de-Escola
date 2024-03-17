@@ -27,7 +27,7 @@ public class Disciplinas {
 
 
     public StringBuilder listarNotas() {
-        StringBuilder listMateriasBuilder = new StringBuilder("Suas matérias:\n");  
+        StringBuilder listMateriasBuilder = new StringBuilder("Suas matérias:\n  \n");  
            
         for (Map.Entry<String, Integer> materia : notas.entrySet()) {
             listMateriasBuilder.append(materia.getKey()  +" Notas: " +  materia.getValue() +"\n" );
