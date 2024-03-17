@@ -3,7 +3,7 @@ import Disciplinas.Disciplina;
 
 public class Professor {
 
-   private String nome;
+   private String nome = "Default";
    
     public Professor(String nome) {
         this.nome = nome;

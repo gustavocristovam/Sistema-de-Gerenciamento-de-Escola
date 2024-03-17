@@ -15,18 +15,28 @@ public class GerenciarDisciplinas {
 
     private ArrayList<Disciplina> disciplinalist = new ArrayList<>();
 // INSERIR MATERIAS BASICAS!
-  /*  public GerenciarDisciplinas() {
+   public GerenciarDisciplinas() {
         for (String materia : materiasBasicas) {
             Disciplina disciplina_obj = new Disciplina(materia);
             disciplinalist.add(disciplina_obj);
         }
-    } */
+    }  
+
+
+    private Disciplina filterDisciplina(String nome) {
+        for (Disciplina disciplina : disciplinalist) {
+            if (disciplina.getNome().equals(nome)) {
+                return disciplina;
+                
+            }
+        }
+        return null;  
+    }
 
     public StringBuilder getDisciplinasList() {
-        StringBuilder texto = new StringBuilder("M: ");
+        StringBuilder texto = new StringBuilder("Matérias: \n");
         for (Disciplina disciplina : disciplinalist) {
-         
-            texto.append(disciplina.getNome() + " : " + disciplina.getProfessor().getNome());
+            texto.append(disciplina.getNome() + " : ");
         }
         return texto;
     }
@@ -35,11 +45,8 @@ public class GerenciarDisciplinas {
 
     public StringBuilder getDisciplina(String nome) {
         StringBuilder texto = new StringBuilder("INFORMAÇÕES: ");
-        for (Disciplina disciplina : disciplinalist) {
-            if (disciplina.getNome().equals(nome)) {
-                texto.append("Nome: " + disciplina.getNome() + " : " + "Professor: " + disciplina.getProfessor());
-            }
-        }
+        Disciplina disciplina = filterDisciplina(nome);
+        texto.append("Nome: " + disciplina.getNome() + " : ");
         return texto;
     }
 
@@ -49,21 +56,17 @@ public class GerenciarDisciplinas {
     }
 
     public void removeDisciplina(String nome) {
-        for (Disciplina disciplina : disciplinalist) {
-            if (disciplina.getNome().equals(nome)) {
-                disciplinalist.remove(disciplina); //DELETAR OBJETO DA ARRAY
-                disciplina = null; //DELETAR OBJETO
-            }
-        }
+        Disciplina disciplina = filterDisciplina(nome);
+        disciplinalist.remove(disciplina); //DELETAR OBJETO DA ARRAY
+        disciplina = null; //DELETAR OBJETO
+       
     }
 
 
-    public void setDisciplinaProfessor(String disciplina, Professor professor) { //QUANDO TIVER O GERENCIAMENTO DE PROFESSOR TROCAR O OBJETO PELO NOME DO PROFESSOR!
-        for (Disciplina objDisciplina : disciplinalist) {
-            if(objDisciplina.getNome().equals(disciplina)) {
-                objDisciplina.setProfessor(professor);
-            }
-        }
+    public void setDisciplinaProfessor(String materia, Professor professor) { //QUANDO TIVER O GERENCIAMENTO DE PROFESSOR TROCAR O OBJETO PELO NOME DO PROFESSOR!
+        Disciplina disciplina = filterDisciplina(materia); 
+        disciplina.setProfessor(professor);
+       
     }
 
 
