@@ -12,7 +12,7 @@ public class Main {
         GerenciarAlunos gerenciarAlunos = new GerenciarAlunos();
         Scanner teclado = new Scanner(System.in);
       
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             System.out.println("Insira o nome do aluno:");
             String nome = teclado.next(); 
             Aluno aluno = gerenciarAlunos.adicionarAluno(nome);
@@ -24,6 +24,10 @@ public class Main {
             System.out.println("\n");
             System.out.println("\n");
             System.out.println(gerenciarAlunos.getListaDeAlunos());
+            System.out.println("Remover aluno:");
+            gerenciarAlunos.removeAluno(teclado.next());
+            System.out.println(gerenciarAlunos.getListaDeAlunos());
+
 
 
           

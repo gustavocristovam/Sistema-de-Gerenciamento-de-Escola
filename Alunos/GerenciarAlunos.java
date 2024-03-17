@@ -11,38 +11,31 @@ public class GerenciarAlunos {
 public StringBuilder getListaDeAlunos() {
         StringBuilder text = new StringBuilder("Lista de alunos: ");
        for (Aluno aluno : alunolist) {
-           text.append(aluno.getNome()).append(", ");
+           
+           text.append(aluno.getNome()).append(": ");
        }
+
    
        return text;
       }
 
    public Aluno adicionarAluno(String nome) {
-
-
         Aluno aluno = new Aluno(nome);
-        
-       adicionarAlunoLista(aluno);
-
+        alunolist.add(aluno);
         return aluno;
     }
 
-    private void adicionarAlunoLista(Aluno aluno) {
-        alunolist.add(aluno);
-     }
-
-
-  
-
-
-public static void removeAluno() {
-
-}
     
-   
 
 
-
-
+public void removeAluno(String nome) {
+    for (Aluno aluno : alunolist) {
+            if(aluno.getNome().equals(nome)) {
+                alunolist.remove(aluno);
+            } else {
+                System.out.println("FALSE!");
+            }
+    }
+}
 
 }
