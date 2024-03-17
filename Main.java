@@ -6,6 +6,7 @@ import Alunos.Aluno;
 import Alunos.GerenciarAlunos;
 import Disciplinas.Disciplina;
 import Disciplinas.GerenciarDisciplinas;
+import Professores.Professor;
 
 public class Main {
 
@@ -87,12 +88,18 @@ public class Main {
        }
     } while (sair == 0);
   */
-
+           
         
 
           
 
         GerenciarDisciplinas disciplinas = new GerenciarDisciplinas();
+
+        Professor ramon = new Professor("Ramon");
+        disciplinas.addDisciplina("Eletiva");
+        disciplinas.setDisciplinaProfessor("Eletiva", ramon);
+
+
 System.out.println( disciplinas.getDisciplinasList());
        
        

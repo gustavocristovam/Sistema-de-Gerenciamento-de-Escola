@@ -8,15 +8,23 @@ public class Disciplina {
 //Cada Disciplina vai ter seu professor! Inlcuede
 
 
-public Disciplina(String materia) {
+protected Disciplina(String materia) {
     this.materia = materia;
 }
 
 
-    String materia;
-    Professor professor = new Professor("Ramos");
+    private String materia;
+    private Professor professor;
 
 
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+ 
     public String getNome() {
         return this.materia;
     }

@@ -11,7 +11,7 @@ public class Aluno {
    // private Disciplina disciplinas = new Disciplina();
 
    
-    public Aluno(String nome) {
+    protected Aluno(String nome) {
         this.nome = nome;
     }
   

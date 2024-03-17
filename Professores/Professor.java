@@ -2,8 +2,10 @@ package Professores;
 import Disciplinas.Disciplina;
 
 public class Professor {
-    String nome;
+
+   private String nome;
    
+
 
     public Professor(String nome) {
         this.nome = nome;

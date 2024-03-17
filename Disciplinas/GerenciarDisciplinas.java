@@ -2,6 +2,8 @@ package Disciplinas;
 
 import java.util.ArrayList;
 
+import Professores.Professor;
+
 
 //CADA Discpl
 
@@ -11,18 +13,19 @@ public class GerenciarDisciplinas {
 
 
     private ArrayList<Disciplina> disciplinalist = new ArrayList<>();
-
-    public GerenciarDisciplinas() {
+// INSERIR MATERIAS BASICAS!
+  /*  public GerenciarDisciplinas() {
         for (String materia : materiasBasicas) {
             Disciplina disciplina_obj = new Disciplina(materia);
             disciplinalist.add(disciplina_obj);
         }
-    }
+    } */
 
     public StringBuilder getDisciplinasList() {
         StringBuilder texto = new StringBuilder("M: ");
         for (Disciplina disciplina : disciplinalist) {
-            texto.append(disciplina);
+         
+            texto.append(disciplina.getNome() + " : " + disciplina.getProfessor().getNome());
         }
         return texto;
     }
@@ -43,6 +46,13 @@ public class GerenciarDisciplinas {
     }
 
 
+    public void setDisciplinaProfessor(String disciplina, Professor professor) { //QUANDO TIVER O GERENCIAMENTO DE PROFESSOR TROCAR O OBJETO PELO NOME DO PROFESSOR!
+        for (Disciplina objDisciplina : disciplinalist) {
+            if(objDisciplina.getNome().equals(disciplina)) {
+                objDisciplina.setProfessor(professor);
+            }
+        }
+    }
 
 
    
