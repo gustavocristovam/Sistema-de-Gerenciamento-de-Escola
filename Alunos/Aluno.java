@@ -8,7 +8,7 @@ import Objetos.Disciplinas;
 public class Aluno {
 
     private String nome;
-    private Disciplinas disciplinas;
+    private Disciplinas disciplinas = new Disciplinas();
 
    
     public Aluno(String nome) {
@@ -25,8 +25,6 @@ public class Aluno {
         return disciplinas;
     }
 
-    public void setDisciplinas(Disciplinas disciplinas) {
-        this.disciplinas = disciplinas;
-    }
+ 
 
 }

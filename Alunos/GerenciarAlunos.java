@@ -26,6 +26,19 @@ public StringBuilder getListaDeAlunos() {
     }
 
     
+public StringBuilder getAluno(String nome) {
+    StringBuilder texto = new StringBuilder("Informações: \n");
+    for (Aluno aluno : alunolist) {
+        if (aluno.getNome().equals(nome)) {
+            texto.append( "Nome:" + aluno.getNome() + " \n" + aluno.getDisciplinas().listarNotas());
+            return texto;
+        }
+    }
+    return null;
+    
+}
+
+    
 
 
 public void removeAluno(String nome) {
