@@ -1,12 +1,13 @@
-package Disciplinas;
+package Admin;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
 
-import Professores.Professor;
+import Disciplinas.Disciplina;
+import Professores.PanelProfessor.Professor;
 
 
-//CADA Discpl
+//ADMINISTRADOR
 
 public class GerenciarDisciplinas {
 
@@ -36,7 +37,7 @@ public class GerenciarDisciplinas {
     public StringBuilder getDisciplinasList() {
         StringBuilder texto = new StringBuilder("Matérias: \n");
         for (Disciplina disciplina : disciplinalist) {
-            texto.append(disciplina.getNome() + " : " + disciplina.getProfessor() + " \n" );
+            texto.append(disciplina.getNome() + " : " + disciplina.getProfessor().getNome() + " \n" );
         }
         return texto;
     }
@@ -49,6 +50,11 @@ public class GerenciarDisciplinas {
         texto.append("Nome: " + disciplina.getNome() + " : ");
         return texto;
     }
+
+    public Disciplina getObjetDisciplina(String nome) {
+        Disciplina disciplinar = filterDisciplina(nome);
+        return disciplinar;
+   }
 
     public void addDisciplina(String nome) {
         Disciplina disciplina = new Disciplina(nome);
@@ -65,8 +71,7 @@ public class GerenciarDisciplinas {
 
     public void setDisciplinaProfessor(String materia, Professor professor) {
         Disciplina disciplina = filterDisciplina(materia);  // FILTRAR MATERIA PELA STRING MATERIA, graças a listDisciplina que tem aqui no objeto
-                                                                    //Pegar Gerenciador de Professores, procurar o String professor, e setar no disciplina.setProfessor()
-             disciplina.setProfessor(professor); 
+        disciplina.setProfessor(professor); 
     }
 
 

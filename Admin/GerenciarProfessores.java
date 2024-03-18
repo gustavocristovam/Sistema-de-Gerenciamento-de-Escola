@@ -1,7 +1,9 @@
-package Professores;
+package Admin;
 
 import java.util.ArrayList;
 
+import Professores.PanelProfessor.Professor;
+//ADMINISTRADOR
 public class GerenciarProfessores {
      private ArrayList<Professor> professorlist = new ArrayList<>();
 

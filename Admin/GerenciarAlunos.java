@@ -1,6 +1,10 @@
-package Alunos;
+package Admin;
 import java.util.ArrayList;
 
+import Alunos.Aluno;
+import Disciplinas.Disciplina;
+import Professores.PanelProfessor.Professor;
+//ADMINISTRADOR
 public class GerenciarAlunos {
     
    
@@ -15,6 +19,13 @@ public class GerenciarAlunos {
         }
         return null;
     }
+
+    public void addDisciplinaAluno(String aluno, Disciplina disciplina) {
+        Aluno alunoObj = filterAluno(aluno);
+        alunoObj.addDisciplina(disciplina);
+    }
+    
+  
 
 
     public StringBuilder getListaDeAlunos(){
@@ -32,12 +43,12 @@ public class GerenciarAlunos {
     }
 
     
-public StringBuilder getAluno(String nome) {
+    public StringBuilder getAluno(String nome) {
     StringBuilder texto = new StringBuilder("Informações: \n  \n");
     Aluno aluno = filterAluno(nome);   
-    texto.append( "Nome: " + aluno.getNome() + " \n \n");
+    texto.append( "Nome: " + aluno.getNome() + aluno.getListDisciplinasAluno() + " \n \n");
     return texto;
-}
+    }
 
    
 public boolean existAluno(String nome) {

@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import Admin.GerenciarAlunos;
+import Admin.GerenciarDisciplinas;
+import Admin.GerenciarProfessores;
 import Alunos.Aluno;
-import Alunos.GerenciarAlunos;
 import Disciplinas.Disciplina;
-import Disciplinas.GerenciarDisciplinas;
-import Professores.GerenciarProfessores;
-import Professores.Professor;
+import Professores.PanelProfessor.Professor;
 
 public class Main {
 
@@ -82,13 +83,13 @@ public class Main {
     } while (sair == 0);
   */
            
-        
-
-          
-
+ 
         GerenciarDisciplinas disciplinas = new GerenciarDisciplinas();
         GerenciarProfessores professores = new GerenciarProfessores();
+        GerenciarAlunos alunos = new GerenciarAlunos();
 
+
+        
        
         professores.addProfessor("Raimundo");
         professores.addProfessor("Torrent");
@@ -99,17 +100,20 @@ public class Main {
         disciplinas.setDisciplinaProfessor("Eletiva", professores.getObjetProfessor("Raimundo"));
         disciplinas.setDisciplinaProfessor("Portugues", professores.getObjetProfessor("Raimundo"));
 
-
         System.out.println( disciplinas.getDisciplinasList());
+
+        alunos.addAluno("Andressa");
+        alunos.addAluno("Alexendro");
+
+
+        System.out.println(alunos.getListaDeAlunos() + "\n \n \n");
+
+       alunos.addDisciplinaAluno("Andressa",disciplinas.getObjetDisciplina("Eletiva") );
+           
+        System.out.println(alunos.getAluno("Andressa"));
+
+       
     
-       
-       
-
-      
-
-
-
-
 
     }
     public static void clearConsole() {

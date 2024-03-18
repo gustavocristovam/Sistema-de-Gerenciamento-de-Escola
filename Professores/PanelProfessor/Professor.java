@@ -1,4 +1,4 @@
-package Professores;
+package Professores.PanelProfessor;
 import Disciplinas.Disciplina;
 
 public class Professor {
