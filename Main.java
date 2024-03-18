@@ -7,112 +7,158 @@ import Admin.GerenciarDisciplinas;
 import Admin.GerenciarProfessores;
 import Alunos.Aluno;
 import Disciplinas.Disciplina;
+import Professores.PanelProfessor.GerenciarAlunosNotas;
 import Professores.PanelProfessor.Professor;
 
 public class Main {
 
-    public static void main(String[] args) {
+   public static void main(String[] args) {
+         //ADMIN
+         GerenciarDisciplinas disciplinas = new GerenciarDisciplinas();
+         GerenciarProfessores professores = new GerenciarProfessores();
+         GerenciarAlunos alunos = new GerenciarAlunos();
+         Scanner teclado = new Scanner(System.in);
 
-        GerenciarAlunos gerenciarAlunos = new GerenciarAlunos();
-        Scanner teclado = new Scanner(System.in);
-      
-        gerenciarAlunos.addAluno("Sergio");
-        gerenciarAlunos.addAluno("Andressa");
-        gerenciarAlunos.getListaDeAlunos();
-       //sistema
-       //alunos
+        //PROFESSORES
+
+        GerenciarAlunosNotas panel_professor = new GerenciarAlunosNotas();
+ 
+  professores.addProfessor("Raimundo");
+  professores.addProfessor("Torrent");
+
+  disciplinas.addDisciplina("Eletiva");
+  disciplinas.addDisciplina("Portugues");
+
+  alunos.addAluno("Andressa");
+  alunos.addAluno("Alexendro");
+        
+  //GET OBJETO PROFESSOR PELO NOME
+  disciplinas.setDisciplinaProfessor("Eletiva", professores.getObjetProfessor("Raimundo"));
+  disciplinas.setDisciplinaProfessor("Portugues", professores.getObjetProfessor("Raimundo"));
+
+  
+
+  
+
+       
        int sair = 0;
 
-       /*  ALUNOS GERENCIMENTO! 
+       
     do {
-       System.out.println("\n Selecione a opção desejada: \n");
-       System.out.println("1 - PROCURAR ALUNO");
-       System.out.println("2 - ADICIONAR ALUNO");
-       System.out.println("3 - REMOVER ALUNO");
-       System.out.println("4 - LISTAR ALUNO \n");
-       System.out.println("5 - SAIR \n");
+        
+       System.out.println("SELECIONE UMA OPÇÃO:");
+       System.out.println("1 - ADMIN");
+       System.out.println("2 - PROFESSOR");
+       System.out.println("3 - SAIR");
        switch (teclado.next()) {
         case "1":
-        clearConsole();
-        System.out.println(gerenciarAlunos.getListaDeAlunos()); 
-        System.out.println("Procurar o nome do Aluno:");
-        String aluno = teclado.next();
-            if (gerenciarAlunos.existAluno(aluno) ) {
-                clearConsole();
-                System.out.println(gerenciarAlunos.getAluno(aluno));
+             clearConsole();
+            System.out.println("Insira a senha para entrar como admin:");
+            if (teclado.next().equals("123")) { //SENHA SIMPLES!
+                System.out.println("SELECIONE UMA OPÇÃO:");
+                System.out.println("1 - GERENCIAR ALUNOS");
+                System.out.println("2 - GERENCIAR PROFESSORES");
+                System.out.println("3 - GERENCIAR DISCIPLINAS");
+                System.out.println("4 - SAIR");
+                switch (teclado.next()) {
+                    case "1":
+                    clearConsole();
+                    System.out.println("SELECIONE UMA OPÇÃO:");
+                    System.out.println("1 - ADICIONAR ALUNO");
+                    System.out.println("2 - REMOVER ALUNO");
+                    System.out.println("3 - PROCURAR ALUNO");
+                    System.out.println("4 - LISTAR ALUNOS");
+                    System.out.println("5 - SAIR");
+                    switch (teclado.next()) {
+                        case "1":
+                        //ALUNOS
+                            clearConsole();
+                            System.out.println("Insira o nome do aluno(a) a ser adicionado:");
+                            String alunoString = teclado.next();
+                            if (!alunos.existAluno(alunoString)) { //NÃO EXISTE ALUNO
+                                alunos.addAluno(alunoString);
+                            } else {
+                                System.out.println("JÁ EXISTE UM ALUNO COM ESTE NOME!");
+                            }
+                            break;
+                        case "2":
+                            clearConsole();
+                            System.out.println("Insira o nome do aluno(a) a ser removido:");
+                            alunoString = teclado.next();
+                            if(alunos.existAluno(alunoString)) {
+                                alunos.removeAluno(alunoString);
+                            } else {
+                                System.out.println("ALUNO NÃO ENCONTRADO!");
+                            }
+                            break;
+                        case "3":
+                            clearConsole();
+                            System.out.println("Insira o nome do aluno(a) para procurar:");
+                            alunoString = teclado.next();
+                            if(alunos.existAluno(alunoString)) {
+                                System.out.println(alunos.getAluno(alunoString));
+                            } else {
+                                System.out.println("ALUNO NÃO ENCONTRADO!");
+                            }
+                            break;
+                        case "4":
+                            clearConsole();
+                            System.out.println(alunos.getListaDeAlunos());
+                            teclado.next();
+                            break;   
+                        case "5":
+                            sair = 1;
+                            break;
+                        default:
+                            sair = 1;
+                            break;
+                    }
+                        break;
+                    case "2":
+                    //PROFESSORES
+                    clearConsole();
+                    System.out.println("SELECIONE UMA OPÇÃO:");
+                    System.out.println("1 - ADICIONAR PROFESSOR");
+                    System.out.println("2 - REMOVER PROFESSOR");
+                    System.out.println("3 - PROCURAR PROFESSOR");
+                    System.out.println("4 - LISTAR PROFESSORES");
+                    System.out.println("5 - SAIR");
+                    switch (teclado.next()) {
+                    }
+                        break;
+                    case "3":
+                        
+                        break;
+                    case "4":
+                    sair = 1;
+                        break;
+                    default:
+                    sair = 1;
+                        break;
+                }
+               
+            
+            }else {
+                System.out.println("SENHA INCORRETA!");
+                sair = 0;
+                break;
             }
-            System.out.println("\n Selecione a opção desejada: \n");
-             System.out.println("1 - PROCURAR ALUNO");
-             System.out.println("2 - ADICIONAR ALUNO");
-             System.out.println("3 - REMOVER ALUNO");
-             System.out.println("4 - LISTAR ALUNO \n");
-             System.out.println("5 - SAIR \n");
-            break; 
-        case "2": 
-        clearConsole();
-         System.out.println("Adicionar o nome do Aluno:");
-            aluno = teclado.next();
-             if (!gerenciarAlunos.existAluno(aluno) ) {
-             gerenciarAlunos.addAluno(aluno);
-             } else {
-                System.out.println("Esse aluno já existe!");
-             }
-         break;
-        case "3":
-       clearConsole();
-       System.out.println(gerenciarAlunos.getListaDeAlunos()); 
-        System.out.println("Remover Aluno:");  
-        aluno = teclado.next();
-             if(gerenciarAlunos.existAluno(aluno)) {
-                gerenciarAlunos.removeAluno(aluno);
-             } else {
-                System.out.println("ALUNO NÃO ENCONTRADO!");
-             }
-         break;
-        case "4":
-        clearConsole();
-               System.out.println(gerenciarAlunos.getListaDeAlunos()); 
-         break;
-        case "5": 
-            sair = 1;
-             break;   
+
+            break;
+       case "2":
+            break;
+       case "3":
+       sair = 1;
+            break;
         default:
         sair = 1;
             break;
        }
     } while (sair == 0);
-  */
+  
            
- 
-        GerenciarDisciplinas disciplinas = new GerenciarDisciplinas();
-        GerenciarProfessores professores = new GerenciarProfessores();
-        GerenciarAlunos alunos = new GerenciarAlunos();
+      
 
-
-        
-       
-        professores.addProfessor("Raimundo");
-        professores.addProfessor("Torrent");
-        disciplinas.addDisciplina("Eletiva");
-        disciplinas.addDisciplina("Portugues");
-
-        //GET OBJETO PROFESSOR PELO NOME
-        disciplinas.setDisciplinaProfessor("Eletiva", professores.getObjetProfessor("Raimundo"));
-        disciplinas.setDisciplinaProfessor("Portugues", professores.getObjetProfessor("Raimundo"));
-
-        System.out.println( disciplinas.getDisciplinasList());
-
-        alunos.addAluno("Andressa");
-        alunos.addAluno("Alexendro");
-
-
-        System.out.println(alunos.getListaDeAlunos() + "\n \n \n");
-
-       alunos.addDisciplinaAluno("Andressa",disciplinas.getObjetDisciplina("Eletiva") );
-           
-        System.out.println(alunos.getAluno("Andressa"));
-
-       
     
 
     }

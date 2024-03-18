@@ -18,9 +18,14 @@ public Disciplina(String materia) {
 
 
     private String materia;
+    private int nota = 0;
     private Professor professor;
     
    
+public int getNota() {
+    return nota;
+}
+
 
     public void setProfessor(Professor professor) {
        

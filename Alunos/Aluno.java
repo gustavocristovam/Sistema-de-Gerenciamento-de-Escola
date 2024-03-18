@@ -23,9 +23,9 @@ public class Aluno {
    }
 
    public StringBuilder getListDisciplinasAluno() {
-        StringBuilder texto = new StringBuilder(" \n Matérias: \n");
+        StringBuilder texto = new StringBuilder(" \n \n Matérias: \n");
         for (Disciplina disciplina : disciplinasAluno) {
-            texto.append(disciplina.getNome() + " : ");
+            texto.append(disciplina.getNome() + " : " + disciplina.getNota() + " \n");
         }
         return texto;
    }

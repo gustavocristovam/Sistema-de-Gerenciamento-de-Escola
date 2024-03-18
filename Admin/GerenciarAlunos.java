@@ -64,6 +64,12 @@ return false;
 }
 
 
+public Aluno getObjetAluno(String nome) {
+    Aluno aluno = filterAluno(nome);
+    return aluno;
+}
+
+
 public void removeAluno(String nome) {
     Aluno aluno = filterAluno(nome);   
     alunolist.remove(aluno);

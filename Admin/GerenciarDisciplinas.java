@@ -47,7 +47,7 @@ public class GerenciarDisciplinas {
     public StringBuilder getDisciplina(String nome) {
         StringBuilder texto = new StringBuilder("INFORMAÇÕES: ");
         Disciplina disciplina = filterDisciplina(nome);
-        texto.append("Nome: " + disciplina.getNome() + " : ");
+        texto.append("Nome: " + disciplina.getNome() + " : " + disciplina.getProfessor().getNome() + " \n");
         return texto;
     }
 
