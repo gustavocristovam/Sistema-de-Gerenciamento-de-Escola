@@ -171,7 +171,65 @@ public class Main {
                     }
                         break;
                     case "3":
-                        
+                         //DISCIPLIAS
+                    clearConsole();
+                    System.out.println("SELECIONE UMA OPÇÃO:");
+                    System.out.println("1 - ADICIONAR DISCIPLINA");
+                    System.out.println("2 - REMOVER DISCIPLINA");
+                    System.out.println("3 - ATRIBUIR PROFESSOR A DISCIPLINA");
+                    System.out.println("4 - LISTAR DISCIPLINAS");
+                    System.out.println("5 - SAIR");
+                    switch (teclado.next()) {
+                        case "1":
+                            clearConsole();
+                            System.out.println("Insira o nome da disciplina a ser adicionado:");
+                            String disciplinaString = teclado.next();
+                            if (!disciplinas.existDisciplina(disciplinaString)) {
+                                disciplinas.addDisciplina(disciplinaString);
+                            } else {
+                                System.out.println("DISCIPLINA JÁ EXISTE!");
+                            }
+                            break;
+                        case "2":
+                         clearConsole();
+                         System.out.println("Insira o nome da disciplina a ser removida:");
+                         disciplinaString = teclado.next();
+                         if (disciplinas.existDisciplina(disciplinaString)) {
+                            disciplinas.removeDisciplina(disciplinaString);
+                         } else {
+                            System.out.println("DISCIPLINA INEXISTENTE!");
+                         }
+                            break;    
+                        case "3":
+                        clearConsole();
+                        System.out.println(disciplinas.getDisciplinasList());
+                        System.out.println(professores.listarProfessor());
+                        System.out.print("Insira o nome da máteria:");
+                        String dString =  teclado.next();
+                        System.out.print("Insira o nome do professor(a):");
+                        String pString =  teclado.next();
+                        //System.out.println("Adicionado na disciplina " +  dString + " o Professor: " + pString);
+                        if(disciplinas.existDisciplina(dString)) {
+                            if (professores.existProfessor(pString)) {
+                                disciplinas.setDisciplinaProfessor(dString, professores.getObjetProfessor(pString));
+                                System.out.println("SUCESSO!");
+                                System.out.println(disciplinas.getDisciplinasList());
+                            } else {
+                                System.out.println("ERROR: Professor(a) não encontrada!");
+                            }
+                           
+                        } else {
+                            System.out.println("ERROR: Matéria não encontrada!");
+                        }
+                            break;
+
+                        case "4":
+                        clearConsole();
+                            System.out.println(disciplinas.getDisciplinasList());
+                            break;
+                        default:
+                            break;
+                    }
                         break;
                     case "4":
                     sair = 1;

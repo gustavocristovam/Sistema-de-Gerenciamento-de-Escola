@@ -3,6 +3,7 @@ package Admin;
 import java.security.PublicKey;
 import java.util.ArrayList;
 
+import Alunos.Aluno;
 import Disciplinas.Disciplina;
 import Professores.PanelProfessor.Professor;
 
@@ -16,7 +17,7 @@ public class GerenciarDisciplinas {
 
     private ArrayList<Disciplina> disciplinalist = new ArrayList<>();
 // INSERIR MATERIAS BASICAS!
-   /*public GerenciarDisciplinas() {
+  /*  public GerenciarDisciplinas() {
         for (String materia : materiasBasicas) {
             Disciplina disciplina_obj = new Disciplina(materia);
             disciplinalist.add(disciplina_obj);
@@ -32,6 +33,15 @@ public class GerenciarDisciplinas {
             }
         }
         return null;  
+    }
+
+    public boolean existDisciplina(String nome) {
+    for (Disciplina disciplina : disciplinalist) {
+        if(disciplina.getNome().equals(nome)) {
+           return true;
+        } 
+    }
+    return false;
     }
 
     public StringBuilder getDisciplinasList() {

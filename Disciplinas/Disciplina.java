@@ -10,18 +10,21 @@ public class Disciplina {
 
 //Cada Disciplina vai ter seu professor! Inlcuede
 //Cada Disciplina vai ter sua nota!
+private String materia;
+private int nota = 0;
+private Professor professor;
+
 
 public Disciplina(String materia) {
     this.materia = materia;
+    this.professor = new Professor("INDEFINIDO"); // NAO TEM PROFESSOR, DEIXARA INDEFINIDO!
 }
 
 
 
-    private String materia;
-    private int nota = 0;
-    private Professor professor;
-    
    
+   
+
 public int getNota() {
     return nota;
 }

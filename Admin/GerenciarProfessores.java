@@ -58,9 +58,7 @@ public class GerenciarProfessores {
           for (Professor professor : professorlist) {
                if(professor.getNome().equals(nome)) {
                     return true;
-               } else {
-                    return false;
-               }
+               } 
           }
           return false;
     }

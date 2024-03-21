@@ -55,13 +55,10 @@ public boolean existAluno(String nome) {
     for (Aluno aluno : alunolist) {
         if(aluno.getNome().equals(nome)) {
            return true;
-        } else {
-            return false;
-        }
-
-}
-return false;
-}
+        } 
+    }
+    return false;
+    }
 
 
 public Aluno getObjetAluno(String nome) {
