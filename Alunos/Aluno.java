@@ -10,13 +10,20 @@ import Disciplinas.Disciplina;
 //ADMINISTRADOR
 
 public class Aluno {
-
+    private static int proximoId = 1;
+    private int id;
     private String nome;
     private ArrayList<Disciplina> disciplinasAluno = new ArrayList<>();
 
+    public Aluno() {
+        this.id = proximoId++;
+    }
 
    // private Disciplina disciplinas = new Disciplina();
-
+    public int getId() {
+        return id;
+    }
+   
 
    public void addDisciplina(Disciplina disciplina) {
             disciplinasAluno.add(disciplina);

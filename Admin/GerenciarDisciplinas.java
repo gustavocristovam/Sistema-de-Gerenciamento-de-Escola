@@ -46,8 +46,10 @@ public class GerenciarDisciplinas {
 
     public StringBuilder getDisciplinasList() {
         StringBuilder texto = new StringBuilder("Matérias: \n");
+        texto.append("ID : NOME : PROFESSOR \n");
         for (Disciplina disciplina : disciplinalist) {
-            texto.append(disciplina.getNome() + " : " + disciplina.getProfessor().getNome() + " \n" );
+
+            texto.append(disciplina.getId() + " : " +disciplina.getNome() + " : " + disciplina.getProfessor().getNome() + " \n" );
         }
         return texto;
     }
