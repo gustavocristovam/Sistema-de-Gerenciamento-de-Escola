@@ -31,6 +31,8 @@ public class Main {
 
   alunos.addAluno("Andressa");
   alunos.addAluno("Alexendro");
+  alunos.addAluno("Fernando");
+  alunos.addAluno("Henrique");
         
   //GET OBJETO PROFESSOR PELO NOME
   disciplinas.setDisciplinaProfessor("Eletiva", professores.getObjetProfessor("Raimundo"));
@@ -51,7 +53,9 @@ public class Main {
        System.out.println("2 - PROFESSOR");
        System.out.println("3 - SAIR");
        switch (teclado.next()) {
+        
         case "1":
+        //ADMIN
              clearConsole();
             System.out.println("Insira a senha para entrar como admin:");
             if (teclado.next().equals("123")) { //SENHA SIMPLES!
@@ -77,6 +81,11 @@ public class Main {
                             String alunoString = teclado.next();
                             if (!alunos.existAluno(alunoString)) { //NÃO EXISTE ALUNO
                                 alunos.addAluno(alunoString);
+                                System.out.println("Insirir disciplinas desse aluno: (true/false)");
+                                if (teclado.nextBoolean()) {
+                                    System.out.println(disciplinas.getDisciplinasList());
+                                  
+                                }
                             } else {
                                 System.out.println("JÁ EXISTE UM ALUNO COM ESTE NOME!");
                             }
@@ -247,7 +256,28 @@ public class Main {
             }
 
             break;
-       case "2":
+       
+        case "2":
+        //PROFESSOR
+        System.out.println("Insira seu nome Professor(a): ");
+
+        if(professores.existProfessor(teclado.next())) { // VERIFICAR INTEGRIDADE DO PROFESSOR!
+            System.out.println("SELECIONE UMA OPÇÃO:");
+            System.out.println("1 - LISTAR ALUNOS");
+            System.out.println("2 - SAIR");
+            switch (teclado.next()) {
+                case "1":
+                    clearConsole();
+                    System.out.println(alunos.getListaDeAlunos());
+                    break;
+            
+                default:
+                    break;
+            }
+        } else {
+            System.out.println("Professor inexistente!");
+        }
+      
             break;
        case "3":
        sair = 1;
