@@ -93,6 +93,7 @@ public class Main {
                             break;
                         case "3":
                             clearConsole();
+                            System.out.println(alunos.getListaDeAlunos());
                             System.out.println("Insira o nome do aluno(a) para procurar:");
                             alunoString = teclado.next();
                             if(alunos.existAluno(alunoString)) {
@@ -124,6 +125,49 @@ public class Main {
                     System.out.println("4 - LISTAR PROFESSORES");
                     System.out.println("5 - SAIR");
                     switch (teclado.next()) {
+                        case "1":
+                        //PROFESSORES
+                            clearConsole();
+                            System.out.println("Insira o nome do professor(a) a ser adicionado:");
+                            String professorString = teclado.next();
+                            if (!professores.existProfessor(professorString)) { //NÃO EXISTE PROFESSOR
+                                professores.addProfessor(professorString);
+                            } else {
+                                System.out.println("JÁ EXISTE UM PROFESSOR COM ESTE NOME!");
+                            }
+                            break;
+                        case "2":
+                            clearConsole();
+                            System.out.println("Insira o nome do professor(a) a ser removido:");
+                            professorString = teclado.next();
+                            if(professores.existProfessor(professorString)) {
+                                professores.removerProfessor(professorString);
+                            } else {
+                                System.out.println("PROFESSOR NÃO ENCONTRADO!");
+                            }
+                            break;
+                        case "3":
+                            clearConsole();
+                            System.out.println(professores.listarProfessor());
+                            System.out.println("Insira o nome do professor(a) para procurar:");
+                            professorString = teclado.next();
+                            if(professores.existProfessor(professorString)) {
+                                System.out.println(professores.procurarProfessor(professorString));
+                            } else {
+                                System.out.println("PROFESSOR NÃO ENCONTRADO!");
+                            }
+                            break;
+                        case "4":
+                            clearConsole();
+                            System.out.println(professores.listarProfessor());
+                            teclado.next();
+                            break;   
+                        case "5":
+                            sair = 1;
+                            break;
+                        default:
+                            sair = 1;
+                            break;
                     }
                         break;
                     case "3":

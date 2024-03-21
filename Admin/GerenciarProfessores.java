@@ -36,7 +36,7 @@ public class GerenciarProfessores {
      public StringBuilder listarProfessor() {
           StringBuilder texto = new StringBuilder("LISTAR PROFESSORES: \n");
           for (Professor professor : professorlist) {
-               texto.append(professor.getNome());
+               texto.append(professor.getNome() + "\n");
           }
           return texto;
      }
