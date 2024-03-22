@@ -11,17 +11,26 @@ public class GerenciarAlunos {
     private ArrayList<Aluno> alunolist = new ArrayList<>();
     
 
-    private Aluno filterAluno(String nome) {
+    private Aluno filterAluno(int id) {
         for (Aluno aluno : alunolist) {
-            if (aluno.getNome().equals(nome)) {
+            if (aluno.getId() ==  id) {
                 return aluno;
             } 
         }
         return null;
     }
 
-    public void addDisciplinaAluno(String aluno, Disciplina disciplina) {
-        Aluno alunoObj = filterAluno(aluno);
+    public int filterIdForName(String nome) {
+        for (Aluno aluno : alunolist) {
+            if (aluno.getNome().equals(nome)) {
+                return aluno.getId();
+            } 
+        }
+        return -1;
+    }
+
+    public void addDisciplinaAluno(int id, Disciplina disciplina) {
+        Aluno alunoObj = filterAluno(id);
         alunoObj.addDisciplina(disciplina);
     }
     
@@ -29,9 +38,10 @@ public class GerenciarAlunos {
 
 
     public StringBuilder getListaDeAlunos(){
-        StringBuilder text = new StringBuilder("Lista de alunos: ");
+        StringBuilder text = new StringBuilder("Lista de alunos:\n");
+        text.append("ID :  NOME: \n");
         for (Aluno aluno : alunolist) {
-           text.append(aluno.getNome()).append(", ");
+           text.append(aluno.getId() + " : " + aluno.getNome() + " \n");
        }
        return text;
       }
@@ -43,17 +53,17 @@ public class GerenciarAlunos {
     }
 
     
-    public StringBuilder getAluno(String nome) {
+    public StringBuilder getAluno(int id) {
     StringBuilder texto = new StringBuilder("Informações: \n  \n");
-    Aluno aluno = filterAluno(nome);   
-    texto.append( "Nome: " + aluno.getNome() + aluno.getListDisciplinasAluno() + " \n \n");
+    Aluno aluno = filterAluno(id);   
+    texto.append("ID: " + aluno.getId() + " " +  "Nome: " + aluno.getNome() + aluno.getListDisciplinasAluno() + " \n \n");
     return texto;
     }
 
    
-public boolean existAluno(String nome) {
+public boolean existAluno(int id) {
     for (Aluno aluno : alunolist) {
-        if(aluno.getNome().equals(nome)) {
+        if(aluno.getId() == id) {
            return true;
         } 
     }
@@ -61,14 +71,14 @@ public boolean existAluno(String nome) {
     }
 
 
-public Aluno getObjetAluno(String nome) {
-    Aluno aluno = filterAluno(nome);
+public Aluno getObjetAluno(int id) {
+    Aluno aluno = filterAluno(id);
     return aluno;
 }
 
 
-public void removeAluno(String nome) {
-    Aluno aluno = filterAluno(nome);   
+public void removeAluno(int id) {
+    Aluno aluno = filterAluno(id);   
     alunolist.remove(aluno);
     aluno = null;        
 }

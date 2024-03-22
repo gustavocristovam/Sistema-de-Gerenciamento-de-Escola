@@ -23,8 +23,8 @@ public class Main {
 
         GerenciarAlunosNotas panel_professor = new GerenciarAlunosNotas();
  
-  professores.addProfessor("Raimundo");
-  professores.addProfessor("Torrent");
+  professores.addProfessor("Raimundo"); // ID = 1
+  professores.addProfessor("Torrent"); //ID = 2
 
   disciplinas.addDisciplina("Eletiva");
   disciplinas.addDisciplina("Portugues");
@@ -33,16 +33,14 @@ public class Main {
   alunos.addAluno("Alexendro");
   alunos.addAluno("Fernando");
   alunos.addAluno("Henrique");
+  alunos.addDisciplinaAluno(1, disciplinas.getObjetDisciplina(1));
         
   //GET OBJETO PROFESSOR PELO NOME
-  disciplinas.setDisciplinaProfessor("Eletiva", professores.getObjetProfessor("Raimundo"));
-  disciplinas.setDisciplinaProfessor("Portugues", professores.getObjetProfessor("Raimundo"));
+  disciplinas.setDisciplinaProfessor(1, professores.getObjetProfessor(1));
+  disciplinas.setDisciplinaProfessor(2, professores.getObjetProfessor(1));
+  disciplinas.setDisciplinaProfessor(2, professores.getObjetProfessor(2));
 
-  
-
-  
-
-       
+ 
        int sair = 0;
 
        
@@ -70,7 +68,7 @@ public class Main {
                     System.out.println("SELECIONE UMA OPÇÃO:");
                     System.out.println("1 - ADICIONAR ALUNO");
                     System.out.println("2 - REMOVER ALUNO");
-                    System.out.println("3 - PROCURAR ALUNO");
+                    System.out.println("3 - INFORMAÇÕES ALUNO");
                     System.out.println("4 - LISTAR ALUNOS");
                     System.out.println("5 - SAIR");
                     switch (teclado.next()) {
@@ -79,23 +77,37 @@ public class Main {
                             clearConsole();
                             System.out.println("Insira o nome do aluno(a) a ser adicionado:");
                             String alunoString = teclado.next();
-                            if (!alunos.existAluno(alunoString)) { //NÃO EXISTE ALUNO
+                            
                                 alunos.addAluno(alunoString);
                                 System.out.println("Insirir disciplinas desse aluno: (true/false)");
                                 if (teclado.nextBoolean()) {
+                                    clearConsole();
+                                    List<Integer> arrayDisciplinas = new ArrayList<>();
                                     System.out.println(disciplinas.getDisciplinasList());
+                                    boolean repeat = true;
+                                do {
+                                    
+                                    System.out.print("Insira os ID da matérias:");
+                                    arrayDisciplinas.add(teclado.nextInt());
+                                    System.out.print("Adicionar mais? (true/false)");
+                                    repeat = teclado.nextBoolean();
+                                } while (repeat);
+                                for (int item : arrayDisciplinas) {
+                                    alunos.addDisciplinaAluno(alunos.filterIdForName(alunoString), disciplinas.getObjetDisciplina(item));
+                                }
+                                
+                            
                                   
                                 }
-                            } else {
-                                System.out.println("JÁ EXISTE UM ALUNO COM ESTE NOME!");
-                            }
+
                             break;
                         case "2":
                             clearConsole();
-                            System.out.println("Insira o nome do aluno(a) a ser removido:");
-                            alunoString = teclado.next();
-                            if(alunos.existAluno(alunoString)) {
-                                alunos.removeAluno(alunoString);
+                            System.out.println(alunos.getListaDeAlunos());
+                            System.out.println("Insira o ID do aluno(a) a ser removido:");
+                            int idAluno = teclado.nextInt();
+                            if(alunos.existAluno(idAluno)) {
+                                alunos.removeAluno(idAluno);
                             } else {
                                 System.out.println("ALUNO NÃO ENCONTRADO!");
                             }
@@ -103,10 +115,10 @@ public class Main {
                         case "3":
                             clearConsole();
                             System.out.println(alunos.getListaDeAlunos());
-                            System.out.println("Insira o nome do aluno(a) para procurar:");
-                            alunoString = teclado.next();
-                            if(alunos.existAluno(alunoString)) {
-                                System.out.println(alunos.getAluno(alunoString));
+                            System.out.println("Insira o ID do aluno(a) para informações:");
+                            idAluno = teclado.nextInt();
+                            if(alunos.existAluno(idAluno)) {
+                                System.out.println(alunos.getAluno(idAluno));
                             } else {
                                 System.out.println("ALUNO NÃO ENCONTRADO!");
                             }
@@ -130,7 +142,7 @@ public class Main {
                     System.out.println("SELECIONE UMA OPÇÃO:");
                     System.out.println("1 - ADICIONAR PROFESSOR");
                     System.out.println("2 - REMOVER PROFESSOR");
-                    System.out.println("3 - PROCURAR PROFESSOR");
+                    System.out.println("3 - INFORMAÇÕES PROFESSOR");
                     System.out.println("4 - LISTAR PROFESSORES");
                     System.out.println("5 - SAIR");
                     switch (teclado.next()) {
@@ -139,29 +151,31 @@ public class Main {
                             clearConsole();
                             System.out.println("Insira o nome do professor(a) a ser adicionado:");
                             String professorString = teclado.next();
-                            if (!professores.existProfessor(professorString)) { //NÃO EXISTE PROFESSOR
+                            //if (!professores.existProfessor(professorString)) { //NÃO EXISTE PROFESSOR
                                 professores.addProfessor(professorString);
-                            } else {
-                                System.out.println("JÁ EXISTE UM PROFESSOR COM ESTE NOME!");
-                            }
+                           // } else {
+                               
+                           // }
                             break;
                         case "2":
                             clearConsole();
-                            System.out.println("Insira o nome do professor(a) a ser removido:");
-                            professorString = teclado.next();
-                            if(professores.existProfessor(professorString)) {
-                                professores.removerProfessor(professorString);
+                            System.out.println(professores.listarProfessor());
+                            System.out.println("Insira o ID do professor(a) a ser removido:");
+                            int IdProfessor = teclado.nextInt();
+                            if(professores.existProfessor(IdProfessor)) {
+                                professores.removerProfessor(IdProfessor);
                             } else {
                                 System.out.println("PROFESSOR NÃO ENCONTRADO!");
                             }
                             break;
                         case "3":
                             clearConsole();
+            
                             System.out.println(professores.listarProfessor());
-                            System.out.println("Insira o nome do professor(a) para procurar:");
-                            professorString = teclado.next();
-                            if(professores.existProfessor(professorString)) {
-                                System.out.println(professores.procurarProfessor(professorString));
+                            System.out.println("Insira o ID do professor(a) para informações:");
+                            IdProfessor = teclado.nextInt();
+                            if(professores.existProfessor(IdProfessor)) {
+                                System.out.println(professores.infoProfessor(IdProfessor));
                             } else {
                                 System.out.println("PROFESSOR NÃO ENCONTRADO!");
                             }
@@ -193,18 +207,19 @@ public class Main {
                             clearConsole();
                             System.out.println("Insira o nome da disciplina a ser adicionado:");
                             String disciplinaString = teclado.next();
-                            if (!disciplinas.existDisciplina(disciplinaString)) {
+                           // if (!disciplinas.existDisciplina(disciplinaString)) {
                                 disciplinas.addDisciplina(disciplinaString);
-                            } else {
-                                System.out.println("DISCIPLINA JÁ EXISTE!");
-                            }
+                            //} else {
+                               
+                           // }
                             break;
                         case "2":
                          clearConsole();
-                         System.out.println("Insira o nome da disciplina a ser removida:");
-                         disciplinaString = teclado.next();
-                         if (disciplinas.existDisciplina(disciplinaString)) {
-                            disciplinas.removeDisciplina(disciplinaString);
+                         System.out.println(disciplinas.getDisciplinasList());
+                         System.out.println("Insira o ID da disciplina a ser removida:");
+                         int idDisciplina = teclado.nextInt();
+                         if (disciplinas.existDisciplina(idDisciplina)) {
+                            disciplinas.removeDisciplina(idDisciplina);
                          } else {
                             System.out.println("DISCIPLINA INEXISTENTE!");
                          }
@@ -213,14 +228,14 @@ public class Main {
                         clearConsole();
                         System.out.println(disciplinas.getDisciplinasList());
                         System.out.println(professores.listarProfessor());
-                        System.out.print("Insira o nome da máteria:");
-                        String dString =  teclado.next();
-                        System.out.print("Insira o nome do professor(a):");
-                        String pString =  teclado.next();
+                        System.out.print("Insira o ID da máteria:");
+                        int idMateria =  teclado.nextInt();
+                        System.out.print("Insira o ID do professor(a):");
+                        int idProfessor =  teclado.nextInt();
                         //System.out.println("Adicionado na disciplina " +  dString + " o Professor: " + pString);
-                        if(disciplinas.existDisciplina(dString)) {
-                            if (professores.existProfessor(pString)) {
-                                disciplinas.setDisciplinaProfessor(dString, professores.getObjetProfessor(pString));
+                        if(disciplinas.existDisciplina(idMateria)) {
+                            if (professores.existProfessor(idProfessor)) {
+                                disciplinas.setDisciplinaProfessor(idMateria, professores.getObjetProfessor(idProfessor));
                                 System.out.println("SUCESSO!");
                                 System.out.println(disciplinas.getDisciplinasList());
                             } else {
@@ -259,9 +274,9 @@ public class Main {
        
         case "2":
         //PROFESSOR
-        System.out.println("Insira seu nome Professor(a): ");
+        System.out.println("Insira seu ID Professor(a): ");
 
-        if(professores.existProfessor(teclado.next())) { // VERIFICAR INTEGRIDADE DO PROFESSOR!
+        if(professores.existProfessor(teclado.nextInt())) { // VERIFICAR INTEGRIDADE DO PROFESSOR!
             System.out.println("SELECIONE UMA OPÇÃO:");
             System.out.println("1 - LISTAR ALUNOS");
             System.out.println("2 - SAIR");
@@ -269,6 +284,10 @@ public class Main {
                 case "1":
                     clearConsole();
                     System.out.println(alunos.getListaDeAlunos());
+                    System.out.println("-==================-");
+                    System.out.println("SELECIONE UMA OPÇÃO:");
+                    System.out.println("1 - SELECIONE UMA OPÇÃO:");
+                   
                     break;
             
                 default:

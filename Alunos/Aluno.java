@@ -14,10 +14,12 @@ public class Aluno {
     private int id;
     private String nome;
     private ArrayList<Disciplina> disciplinasAluno = new ArrayList<>();
-
-    public Aluno() {
+    
+    public Aluno(String nome) {
+        this.nome = nome;
         this.id = proximoId++;
     }
+   
 
    // private Disciplina disciplinas = new Disciplina();
     public int getId() {
@@ -41,9 +43,7 @@ public class Aluno {
 
    }
    
-    public Aluno(String nome) {
-        this.nome = nome;
-    }
+    
   
    
     public String getNome() {

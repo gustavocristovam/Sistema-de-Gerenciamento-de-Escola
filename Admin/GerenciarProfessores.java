@@ -12,9 +12,9 @@ public class GerenciarProfessores {
           return professorlist;
     }
 
-    public Professor filterProfessor(String nome) {
+    public Professor filterProfessor(int id) {
           for (Professor professor : professorlist) {
-               if (professor.getNome().equals(nome)) {
+               if (professor.getId() == id) {
                     return professor;
                }
      }
@@ -26,8 +26,8 @@ public class GerenciarProfessores {
           professorlist.add(professor);
      }
 
-     public void removerProfessor(String nome) {
-          Professor professor = filterProfessor(nome);
+     public void removerProfessor(int id) {
+          Professor professor = filterProfessor(id);
           professorlist.remove(professor);
           professor = null; 
      }
@@ -36,27 +36,27 @@ public class GerenciarProfessores {
      public StringBuilder listarProfessor() {
           StringBuilder texto = new StringBuilder("LISTAR PROFESSORES: \n");
           for (Professor professor : professorlist) {
-               texto.append(professor.getNome() + "\n");
+               texto.append(professor.getId() + " : " + professor.getNome() + "\n");
           }
           return texto;
      }
 
 
-     public Professor getObjetProfessor(String nome) {
-          Professor professor = filterProfessor(nome);
+     public Professor getObjetProfessor(int id) {
+          Professor professor = filterProfessor(id);
           return professor;
      }
 
-     public StringBuilder procurarProfessor(String nome) {                 //QUANDO TIVER MAIS INFORMAÇÕES VAI SER MAIS UTIL.!
+     public StringBuilder infoProfessor(int id) {                 //QUANDO TIVER MAIS INFORMAÇÕES VAI SER MAIS UTIL.!
           StringBuilder texto = new StringBuilder("INFORMAÇÕES: \n");
-          Professor professor = filterProfessor(nome);
+          Professor professor = filterProfessor(id);
           texto.append(professor.getNome());  
           return texto;
      }
 
-    public boolean existProfessor(String nome) {
+    public boolean existProfessor(int id) { //FILTRAR PELO ID
           for (Professor professor : professorlist) {
-               if(professor.getNome().equals(nome)) {
+               if(professor.getId() == id) {
                     return true;
                } 
           }

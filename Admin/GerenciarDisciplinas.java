@@ -25,9 +25,9 @@ public class GerenciarDisciplinas {
     }  */
 
 
-    private Disciplina filterDisciplina(String nome) {
+    private Disciplina filterDisciplina(int id) {
         for (Disciplina disciplina : disciplinalist) {
-            if (disciplina.getNome().equals(nome)) {
+            if (disciplina.getId() == id) {
                 return disciplina;
                 
             }
@@ -35,9 +35,9 @@ public class GerenciarDisciplinas {
         return null;  
     }
 
-    public boolean existDisciplina(String nome) {
+    public boolean existDisciplina(int id) {
     for (Disciplina disciplina : disciplinalist) {
-        if(disciplina.getNome().equals(nome)) {
+        if(disciplina.getId() == id) {
            return true;
         } 
     }
@@ -56,15 +56,15 @@ public class GerenciarDisciplinas {
 
 
 
-    public StringBuilder getDisciplina(String nome) {
+    public StringBuilder getDisciplina(int id) {
         StringBuilder texto = new StringBuilder("INFORMAÇÕES: ");
-        Disciplina disciplina = filterDisciplina(nome);
+        Disciplina disciplina = filterDisciplina(id);
         texto.append("Nome: " + disciplina.getNome() + " : " + disciplina.getProfessor().getNome() + " \n");
         return texto;
     }
 
-    public Disciplina getObjetDisciplina(String nome) {
-        Disciplina disciplinar = filterDisciplina(nome);
+    public Disciplina getObjetDisciplina(int id) {
+        Disciplina disciplinar = filterDisciplina(id);
         return disciplinar;
    }
 
@@ -73,16 +73,16 @@ public class GerenciarDisciplinas {
         disciplinalist.add(disciplina);
     }
 
-    public void removeDisciplina(String nome) {
-        Disciplina disciplina = filterDisciplina(nome);
+    public void removeDisciplina(int id) {
+        Disciplina disciplina = filterDisciplina(id);
         disciplinalist.remove(disciplina); //DELETAR OBJETO DA ARRAY
         disciplina = null; //DELETAR OBJETO
        
     }
 
 
-    public void setDisciplinaProfessor(String materia, Professor professor) {
-        Disciplina disciplina = filterDisciplina(materia);  // FILTRAR MATERIA PELA STRING MATERIA, graças a listDisciplina que tem aqui no objeto
+    public void setDisciplinaProfessor(int id, Professor professor) {
+        Disciplina disciplina = filterDisciplina(id);  // FILTRAR MATERIA PELO ID MATERIA, graças a listDisciplina que tem aqui no objeto
         disciplina.setProfessor(professor); 
     }
 
