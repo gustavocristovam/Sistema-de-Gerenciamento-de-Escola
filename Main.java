@@ -40,18 +40,18 @@ public class Main {
   alunos.addAluno("Andressa");
   alunos.addAluno("Alexendro");
   alunos.addAluno("Fernando");
-  alunos.addAluno("Henrique");
+  
 
   alunos.addDisciplinaAluno(1, disciplinas.getObjetDisciplina(1));
-  alunos.addDisciplinaAluno(1, disciplinas.getObjetDisciplina(2));
   alunos.addDisciplinaAluno(1, disciplinas.getObjetDisciplina(3));
-  alunos.addDisciplinaAluno(2, disciplinas.getObjetDisciplina(1));
   alunos.addDisciplinaAluno(2, disciplinas.getObjetDisciplina(2));
   alunos.addDisciplinaAluno(2, disciplinas.getObjetDisciplina(3));
   alunos.addDisciplinaAluno(3, disciplinas.getObjetDisciplina(1));
   alunos.addDisciplinaAluno(3, disciplinas.getObjetDisciplina(2));
   
-  
+  //Andressa =  Eletiva, Matématica
+  //Alexandro = Portugues, Matematica
+ //Fernando = Eletiva, Portugues
  
        int sair = 0;
 
@@ -293,29 +293,26 @@ public class Main {
             int idProfessor = teclado.nextInt();
         if(professores.existProfessor(idProfessor)) { // VERIFICAR INTEGRIDADE DO PROFESSOR!
             clearConsole();
+            GerenciarAlunosNotas notasGerenciar = new GerenciarAlunosNotas();
             System.out.println("                                                 Bem-vindo " + professores.filterProfessor(idProfessor).getNome());
 
             //Sistema para filtar entre todas as disciplinas uma disciplina que tenha o Object professor igual idProfessor
                
-
-            System.out.println(" Disciplina: " + disciplinas.getProfessorOfDisciplina(idProfessor));
+            Disciplina professoDisciplina = disciplinas.getProfessorOfDisciplina(idProfessor);
+            System.out.println("ID: " + professoDisciplina.getId() + " Disciplina: " + professoDisciplina.getNome());
             System.out.println("-======================================================================================================================-");
-            System.out.println("SELECIONE UMA OPÇÃO:");
-            System.out.println("1 - LISTAR ALUNOS");
-            System.out.println("2 - SAIR");
-            switch (teclado.next()) {
-                case "1":
-                    clearConsole();
-                    System.out.println(alunos.getListaDeAlunos());
-                    System.out.println("-==================================================-");
-                    System.out.println("SELECIONE UMA OPÇÃO:");
-                    System.out.println("1 - :");
-                   
-                    break;
             
-                default:
-                    break;
-            }
+                System.out.println(notasGerenciar.getAlunosAndNotas(professoDisciplina.getId()));
+           
+            System.out.println("1- ATRIBUIR NOTA ALUNO(a):");
+            System.out.println("ID do aluno:");
+            int aluno = teclado.nextInt();
+            System.out.println("Nota do aluno:");
+            int nota = teclado.nextInt();
+            notasGerenciar.setAlunoNota(aluno, nota, professoDisciplina);
+            clearConsole();
+            System.out.println(notasGerenciar.getAlunosAndNotas(professoDisciplina.getId()));
+
         } else {
             System.out.println("Professor inexistente!");
         }
@@ -336,6 +333,7 @@ public class Main {
     
 
     }
+
     public static void clearConsole() {
         try {
             final String os = System.getProperty("os.name");
@@ -353,7 +351,5 @@ public class Main {
             System.out.println("Erro ao limpar o console: " + e.getMessage());
         }
     }
-    
+
 }
-
-

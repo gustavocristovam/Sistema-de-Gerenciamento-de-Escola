@@ -28,10 +28,16 @@ public int getId() {
     return id;
 }
    
-   
+public void setID(int id) {
+    this.id = id;
+}
 
 public int getNota() {
     return nota;
+}
+
+public void setNota(int nota) {
+    this.nota = nota;
 }
 
 
@@ -41,7 +47,7 @@ public int getNota() {
     }
 
     public Professor getProfessor() {
-        return professor;
+        return this.professor;
     }
  
     public String getNome() {

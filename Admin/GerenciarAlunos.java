@@ -8,10 +8,12 @@ import Professores.PanelProfessor.Professor;
 public class GerenciarAlunos {
     
    
-    private ArrayList<Aluno> alunolist = new ArrayList<>();
+    private static ArrayList<Aluno> alunolist = new ArrayList<>();
     
 
-    private Aluno filterAluno(int id) {
+
+
+    public Aluno filterAluno(int id) {
         for (Aluno aluno : alunolist) {
             if (aluno.getId() ==  id) {
                 return aluno;
@@ -19,6 +21,12 @@ public class GerenciarAlunos {
         }
         return null;
     }
+
+    public ArrayList<Aluno> getArrayList() {
+        return alunolist;
+    }
+
+
 
     public int filterIdForName(String nome) {
         for (Aluno aluno : alunolist) {
@@ -29,9 +37,12 @@ public class GerenciarAlunos {
         return -1;
     }
 
-    public void addDisciplinaAluno(int id, Disciplina disciplina) {
-        Aluno alunoObj = filterAluno(id);
-        alunoObj.addDisciplina(disciplina);
+    public void addDisciplinaAluno(int id, Disciplina disciplina) { 
+        Aluno alunoObj = filterAluno(id); //FILTRAR ALUNO PELO ID
+        Disciplina disciplina_aluno = new Disciplina(disciplina.getNome()); // CRIA UMA NOVO OBJETO DISCIPLINA E COM O NOME
+        disciplina_aluno.setProfessor(disciplina.getProfessor()); //Setando o professor no novo objeto
+        disciplina_aluno.setID(disciplina.getId()); //Setando o ID no novo objeto
+        alunoObj.addDisciplina(disciplina_aluno);
     }
     
   

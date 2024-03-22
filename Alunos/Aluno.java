@@ -31,6 +31,11 @@ public class Aluno {
             disciplinasAluno.add(disciplina);
    }
 
+
+    public ArrayList<Disciplina> getListArrayList() {
+        return disciplinasAluno;
+    }
+
    public StringBuilder getListDisciplinasAluno() {
         StringBuilder texto = new StringBuilder(" \n \n Matérias: \n");
         for (Disciplina disciplina : disciplinasAluno) {

@@ -17,13 +17,18 @@ public class GerenciarDisciplinas {
 
     private ArrayList<Disciplina> disciplinalist = new ArrayList<>();
 // INSERIR MATERIAS BASICAS!
-  /*  public GerenciarDisciplinas() {
+   public GerenciarDisciplinas() {
         for (String materia : materiasBasicas) {
             Disciplina disciplina_obj = new Disciplina(materia);
             disciplinalist.add(disciplina_obj);
         }
-    }  */
+    }  
 
+
+    public void addDisciplina(String nome) {
+        Disciplina disciplina = new Disciplina(nome); //CRIAR OBJETO
+        disciplinalist.add(disciplina);
+    }
 
    private Disciplina filterDisciplina(int id) {
         for (Disciplina disciplina : disciplinalist) {
@@ -63,11 +68,11 @@ public class GerenciarDisciplinas {
         return texto;
     }
 
-    public String getProfessorOfDisciplina(int idprofessor) {
+    public Disciplina getProfessorOfDisciplina(int idprofessor) {
         GerenciarProfessores professores = new GerenciarProfessores();
         for (Disciplina disciplina : disciplinalist) {
             if (disciplina.getProfessor().equals(professores.filterProfessor(idprofessor))) {
-                return disciplina.getNome();
+                return disciplina;
                 
             }
         }
@@ -80,10 +85,7 @@ public class GerenciarDisciplinas {
         return disciplinar;
    }
 
-    public void addDisciplina(String nome) {
-        Disciplina disciplina = new Disciplina(nome);
-        disciplinalist.add(disciplina);
-    }
+   
 
     public void removeDisciplina(int id) {
         Disciplina disciplina = filterDisciplina(id);
