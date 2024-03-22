@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Professores.PanelProfessor.Professor;
 //ADMINISTRADOR
 public class GerenciarProfessores {
-     private ArrayList<Professor> professorlist = new ArrayList<>();
+     private static ArrayList<Professor> professorlist = new ArrayList<>();
 
 
     public ArrayList<Professor> getProfessoresObjet() {

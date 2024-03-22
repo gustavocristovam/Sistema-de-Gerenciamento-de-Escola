@@ -25,7 +25,7 @@ public class GerenciarDisciplinas {
     }  */
 
 
-    private Disciplina filterDisciplina(int id) {
+   private Disciplina filterDisciplina(int id) {
         for (Disciplina disciplina : disciplinalist) {
             if (disciplina.getId() == id) {
                 return disciplina;
@@ -62,6 +62,18 @@ public class GerenciarDisciplinas {
         texto.append("Nome: " + disciplina.getNome() + " : " + disciplina.getProfessor().getNome() + " \n");
         return texto;
     }
+
+    public String getProfessorOfDisciplina(int idprofessor) {
+        GerenciarProfessores professores = new GerenciarProfessores();
+        for (Disciplina disciplina : disciplinalist) {
+            if (disciplina.getProfessor().equals(professores.filterProfessor(idprofessor))) {
+                return disciplina.getNome();
+                
+            }
+        }
+        return null;  
+    }
+
 
     public Disciplina getObjetDisciplina(int id) {
         Disciplina disciplinar = filterDisciplina(id);

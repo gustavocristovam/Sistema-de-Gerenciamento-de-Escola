@@ -24,22 +24,34 @@ public class Main {
         GerenciarAlunosNotas panel_professor = new GerenciarAlunosNotas();
  
   professores.addProfessor("Raimundo"); // ID = 1
-  professores.addProfessor("Torrent"); //ID = 2
+  professores.addProfessor("Vanessa"); //ID = 2
+  professores.addProfessor("Pedro"); //ID = 3
 
   disciplinas.addDisciplina("Eletiva");
   disciplinas.addDisciplina("Portugues");
+  disciplinas.addDisciplina("Matématica");
+
+  //GET OBJETO PROFESSOR PELO NOME
+  disciplinas.setDisciplinaProfessor(1, professores.getObjetProfessor(1));
+  disciplinas.setDisciplinaProfessor(2, professores.getObjetProfessor(2));
+  disciplinas.setDisciplinaProfessor(3, professores.getObjetProfessor(3));
+
 
   alunos.addAluno("Andressa");
   alunos.addAluno("Alexendro");
   alunos.addAluno("Fernando");
   alunos.addAluno("Henrique");
-  alunos.addDisciplinaAluno(1, disciplinas.getObjetDisciplina(1));
-        
-  //GET OBJETO PROFESSOR PELO NOME
-  disciplinas.setDisciplinaProfessor(1, professores.getObjetProfessor(1));
-  disciplinas.setDisciplinaProfessor(2, professores.getObjetProfessor(1));
-  disciplinas.setDisciplinaProfessor(2, professores.getObjetProfessor(2));
 
+  alunos.addDisciplinaAluno(1, disciplinas.getObjetDisciplina(1));
+  alunos.addDisciplinaAluno(1, disciplinas.getObjetDisciplina(2));
+  alunos.addDisciplinaAluno(1, disciplinas.getObjetDisciplina(3));
+  alunos.addDisciplinaAluno(2, disciplinas.getObjetDisciplina(1));
+  alunos.addDisciplinaAluno(2, disciplinas.getObjetDisciplina(2));
+  alunos.addDisciplinaAluno(2, disciplinas.getObjetDisciplina(3));
+  alunos.addDisciplinaAluno(3, disciplinas.getObjetDisciplina(1));
+  alunos.addDisciplinaAluno(3, disciplinas.getObjetDisciplina(2));
+  
+  
  
        int sair = 0;
 
@@ -84,14 +96,17 @@ public class Main {
                                     clearConsole();
                                     List<Integer> arrayDisciplinas = new ArrayList<>();
                                     System.out.println(disciplinas.getDisciplinasList());
-                                    boolean repeat = true;
+                                    int materia;
                                 do {
-                                    
-                                    System.out.print("Insira os ID da matérias:");
-                                    arrayDisciplinas.add(teclado.nextInt());
-                                    System.out.print("Adicionar mais? (true/false)");
-                                    repeat = teclado.nextBoolean();
-                                } while (repeat);
+                            
+                                    System.out.print("Insira os ID da matérias: (Sair = 0)");
+                                    materia = teclado.nextInt();
+                                    if (materia == 0) {
+                                        break;
+                                    }
+                                    arrayDisciplinas.add(materia);
+                                   
+                                } while (true);
                                 for (int item : arrayDisciplinas) {
                                     alunos.addDisciplinaAluno(alunos.filterIdForName(alunoString), disciplinas.getObjetDisciplina(item));
                                 }
@@ -275,8 +290,16 @@ public class Main {
         case "2":
         //PROFESSOR
         System.out.println("Insira seu ID Professor(a): ");
+            int idProfessor = teclado.nextInt();
+        if(professores.existProfessor(idProfessor)) { // VERIFICAR INTEGRIDADE DO PROFESSOR!
+            clearConsole();
+            System.out.println("                                                 Bem-vindo " + professores.filterProfessor(idProfessor).getNome());
 
-        if(professores.existProfessor(teclado.nextInt())) { // VERIFICAR INTEGRIDADE DO PROFESSOR!
+            //Sistema para filtar entre todas as disciplinas uma disciplina que tenha o Object professor igual idProfessor
+               
+
+            System.out.println(" Disciplina: " + disciplinas.getProfessorOfDisciplina(idProfessor));
+            System.out.println("-======================================================================================================================-");
             System.out.println("SELECIONE UMA OPÇÃO:");
             System.out.println("1 - LISTAR ALUNOS");
             System.out.println("2 - SAIR");
@@ -284,9 +307,9 @@ public class Main {
                 case "1":
                     clearConsole();
                     System.out.println(alunos.getListaDeAlunos());
-                    System.out.println("-==================-");
+                    System.out.println("-==================================================-");
                     System.out.println("SELECIONE UMA OPÇÃO:");
-                    System.out.println("1 - SELECIONE UMA OPÇÃO:");
+                    System.out.println("1 - :");
                    
                     break;
             
