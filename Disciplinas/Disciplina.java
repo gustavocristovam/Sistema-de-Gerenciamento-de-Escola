@@ -13,7 +13,6 @@ public class Disciplina {
 private static int proximoId = 1; // Compartilhada entre todas as instancias
 private int id;
 private String materia;
-private int nota = 0;
 private Professor professor;
 
 
@@ -32,13 +31,6 @@ public void setID(int id) {
     this.id = id;
 }
 
-public int getNota() {
-    return nota;
-}
-
-public void setNota(int nota) {
-    this.nota = nota;
-}
 
 
     public void setProfessor(Professor professor) {

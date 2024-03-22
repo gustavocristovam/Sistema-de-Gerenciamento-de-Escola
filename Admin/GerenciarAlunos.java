@@ -39,9 +39,7 @@ public class GerenciarAlunos {
 
     public void addDisciplinaAluno(int id, Disciplina disciplina) { 
         Aluno alunoObj = filterAluno(id); //FILTRAR ALUNO PELO ID
-        Disciplina disciplina_aluno = new Disciplina(disciplina.getNome()); // CRIA UMA NOVO OBJETO DISCIPLINA E COM O NOME
-        disciplina_aluno.setProfessor(disciplina.getProfessor()); //Setando o professor no novo objeto
-        disciplina_aluno.setID(disciplina.getId()); //Setando o ID no novo objeto
+        Disciplina disciplina_aluno = disciplina; 
         alunoObj.addDisciplina(disciplina_aluno);
     }
     
